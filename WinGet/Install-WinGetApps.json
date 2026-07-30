@@ -1,0 +1,105 @@
+{
+  "id": "856fcb58-88f4-483e-bb36-36d5ab4e9dc4",
+  "name": "App - Install Winget Applications",
+  "description": "Installs one or more applications from the winget repository using application IDs.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "9e0ab360-366e-4ae5-ba0c-cf7f9cc5c8aa",
+      "stepDefinitionId": "856fcb58-88f4-483e-bb36-36d5ab4e9dc4",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Install-WinGetApps.ps1 script",
+          "required": true,
+          "defaultValue": "",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Install-WinGetApps.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "WingetAppIDs",
+          "displayName": "Winget Application IDs",
+          "description": "Enter one winget application ID per line. Example: Mozilla.Firefox",
+          "required": true,
+          "defaultValue": "",
+          "type": "LargeText",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "WingetScope",
+          "displayName": "Install Scope",
+          "description": "Select the installation scope for winget packages",
+          "required": true,
+          "defaultValue": "machine",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            {
+              "displayName": "Machine",
+              "value": "machine"
+            },
+            {
+              "displayName": "User",
+              "value": "user"
+            }
+          ]
+        },
+        {
+          "name": "WingetAcceptPackageAgreements",
+          "displayName": "Accept Package Agreements",
+          "description": "Automatically accept package license agreements",
+          "required": true,
+          "defaultValue": "true",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "WingetAcceptSourceAgreements",
+          "displayName": "Accept Source Agreements",
+          "description": "Automatically accept winget source agreements",
+          "required": true,
+          "defaultValue": "true",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        }
+      ],
+      "validators": null,
+      "createdDate": 1783789360,
+      "lastModifiedDate": 1783789360
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1783789360,
+  "lastModifiedDate": 1783789360,
+  "readOnly": false
+}
