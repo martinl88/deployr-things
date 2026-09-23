@@ -1,0 +1,38 @@
+{
+  "id": "6fd76f0f-43ee-4b44-b496-2c0c61fdb471",
+  "name": "App - VMware Tools",
+  "description": "Downloads and installs the latest VMware Tools x64 from VMware's public package repository.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Application",
+  "versions": [
+    {
+      "id": "498fd387-3b40-4ebd-b074-b8bfb9828e9c",
+      "contentItemId": "6fd76f0f-43ee-4b44-b496-2c0c61fdb471",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Installs the latest VMware Tools x64.",
+      "relativePath": "Content/6fd76f0f-43ee-4b44-b496-2c0c61fdb471/1/6fd76f0f-43ee-4b44-b496-2c0c61fdb471.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": "pwsh.exe -file .\\Install-VMwareTools.ps1",
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": "0 3010 1641",
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "VMware",
+    "Tools"
+  ],
+  "flags": 0
+}

@@ -10,7 +10,7 @@ param(
     [int]$Timeout = 1800,
 
     [Parameter(Mandatory = $false)]
-    [string]$LogFile = "C:\windows\Temp\VMwareTools_Install.log"
+    [string]$LogFile = "C:\_2P\Logs\VMwareTools_Install.log"
 )
 
 function Write-Log {
