@@ -1,0 +1,38 @@
+{
+  "id": "7ce6e61b-4006-42c6-8386-4b6091c842ef",
+  "name": "Customize - Configure Windows Power Settings",
+  "description": "PowerShell scripts used by the Configure Windows Power Settings custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "5e9c0b49-23fb-486f-bb9d-678a0da45e12",
+      "contentItemId": "7ce6e61b-4006-42c6-8386-4b6091c842ef",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Set-PowerSettings.ps1",
+      "relativePath": "Content/7ce6e61b-4006-42c6-8386-4b6091c842ef/1/7ce6e61b-4006-42c6-8386-4b6091c842ef.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "PowerSettings"
+  ],
+  "flags": 0
+}

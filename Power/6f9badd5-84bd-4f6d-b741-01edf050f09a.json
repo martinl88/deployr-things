@@ -1,0 +1,260 @@
+{
+  "id": "6f9badd5-84bd-4f6d-b741-01edf050f09a",
+  "name": "Customize - Configure Windows Power Settings",
+  "description": "Configures independent plugged-in and battery power settings on the Windows Balanced power plan and makes it active.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "c93761da-6d5e-48e1-a85e-386d8fa50557",
+      "stepDefinitionId": "6f9badd5-84bd-4f6d-b741-01edf050f09a",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Set-PowerSettings.ps1 script",
+          "required": true,
+          "defaultValue": "7ce6e61b-4006-42c6-8386-4b6091c842ef:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Set-PowerSettings.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisplayTimeoutAc",
+          "displayName": "Display Timeout - Plugged In",
+          "description": "Minutes before the display turns off while plugged in. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisplayTimeoutDc",
+          "displayName": "Display Timeout - Battery",
+          "description": "Minutes before the display turns off on battery. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "SleepTimeoutAc",
+          "displayName": "Sleep Timeout - Plugged In",
+          "description": "Minutes before the computer sleeps while plugged in. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "SleepTimeoutDc",
+          "displayName": "Sleep Timeout - Battery",
+          "description": "Minutes before the computer sleeps on battery. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "HibernateTimeoutAc",
+          "displayName": "Hibernate Timeout - Plugged In",
+          "description": "Minutes before the computer hibernates while plugged in. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "HibernateTimeoutDc",
+          "displayName": "Hibernate Timeout - Battery",
+          "description": "Minutes before the computer hibernates on battery. Leave blank for no change; 0 means Never.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "LidActionAc",
+          "displayName": "Lid Close Action - Plugged In",
+          "description": "Action taken when the lid is closed while plugged in.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "LidActionDc",
+          "displayName": "Lid Close Action - Battery",
+          "description": "Action taken when the lid is closed on battery.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "PowerButtonActionAc",
+          "displayName": "Power Button Action - Plugged In",
+          "description": "Action taken when the power button is pressed while plugged in.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "PowerButtonActionDc",
+          "displayName": "Power Button Action - Battery",
+          "description": "Action taken when the power button is pressed on battery.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "SleepButtonActionAc",
+          "displayName": "Sleep Button Action - Plugged In",
+          "description": "Action taken when the sleep button is pressed while plugged in.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "SleepButtonActionDc",
+          "displayName": "Sleep Button Action - Battery",
+          "description": "Action taken when the sleep button is pressed on battery.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Do nothing", "value": "DoNothing" },
+            { "displayName": "Sleep", "value": "Sleep" },
+            { "displayName": "Hibernate", "value": "Hibernate" },
+            { "displayName": "Shut down", "value": "ShutDown" }
+          ]
+        },
+        {
+          "name": "Hibernation",
+          "displayName": "System Hibernation",
+          "description": "Optionally enable or disable the system-wide Windows hibernation feature.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Enabled", "value": "Enabled" },
+            { "displayName": "Disabled", "value": "Disabled" }
+          ]
+        },
+        {
+          "name": "FastStartup",
+          "displayName": "Fast Startup",
+          "description": "Optionally enable or disable Windows Fast startup. Enabling it also enables hibernation as a prerequisite.",
+          "required": true,
+          "defaultValue": "NoChange",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No change", "value": "NoChange" },
+            { "displayName": "Enabled", "value": "Enabled" },
+            { "displayName": "Disabled", "value": "Disabled" }
+          ]
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false
+}
