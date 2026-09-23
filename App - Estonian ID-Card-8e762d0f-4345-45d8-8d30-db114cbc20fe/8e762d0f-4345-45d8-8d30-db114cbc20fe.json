@@ -1,0 +1,39 @@
+{
+  "id": "8e762d0f-4345-45d8-8d30-db114cbc20fe",
+  "name": "App - Estonian ID-Card",
+  "description": "Downloads and installs the Estonian Open-EID ID-card software and the SmartCardRemoval service.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Application",
+  "versions": [
+    {
+      "id": "75ad2d55-140d-4192-88fd-d457d991531a",
+      "contentItemId": "8e762d0f-4345-45d8-8d30-db114cbc20fe",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Installs the Estonian Open-EID ID-card software and SmartCardRemoval service.",
+      "relativePath": "Content/8e762d0f-4345-45d8-8d30-db114cbc20fe/1/8e762d0f-4345-45d8-8d30-db114cbc20fe.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\Install-EstonianIDCard.ps1",
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": "0 3010",
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "Estonian",
+    "ID-Card",
+    "Open-EID"
+  ],
+  "flags": 0
+}
