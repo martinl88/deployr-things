@@ -1,0 +1,39 @@
+{
+  "id": "c163d154-dc67-44a9-a159-bd27cc2e757f",
+  "name": "Dell - Change BIOS Settings",
+  "description": "PowerShell script and CSV used by the Dell BIOS Settings custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "57a7a3b5-b07e-42b4-9bc8-a394c230f4fc",
+      "contentItemId": "c163d154-dc67-44a9-a159-bd27cc2e757f",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Set-DellBIOSSettings.ps1 and DellBiosSettings.csv",
+      "relativePath": "Content/c163d154-dc67-44a9-a159-bd27cc2e757f/1/c163d154-dc67-44a9-a159-bd27cc2e757f.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1783789360,
+      "lastModifiedDate": 1783789360,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1783789360,
+  "lastModifiedDate": 1783789360,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "Dell",
+    "BIOS"
+  ],
+  "flags": 0
+}

@@ -1,0 +1,252 @@
+{
+  "id": "0d583c5d-1b66-4af4-8491-ff9d170d9856",
+  "name": "App - Configure Dell BIOS Settings",
+  "description": "Configures common Dell BIOS settings using the DellBIOSProvider PowerShell module, with options to set or clear the admin and system passwords.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "f7d9602d-7744-4f30-9f76-1ac3ec0e9066",
+      "stepDefinitionId": "0d583c5d-1b66-4af4-8491-ff9d170d9856",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Set-DellBIOSSettings.ps1 script and DellBiosSettings.csv",
+          "required": true,
+          "defaultValue": "c163d154-dc67-44a9-a159-bd27cc2e757f:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Set-DellBIOSSettings.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "BiosPassword",
+          "displayName": "BIOS Admin Password",
+          "description": "The current BIOS admin password. Also used to set or clear the admin password when needed.",
+          "required": true,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "ClearAdminPassword",
+          "displayName": "Clear Admin Password",
+          "description": "Clear the BIOS admin password after applying settings. Requires the BIOS Admin Password to be populated.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "SystemPassword",
+          "displayName": "BIOS System Password",
+          "description": "The BIOS system (user) password. Used to set the system password or to clear it when the admin password is not available.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "ClearSystemPassword",
+          "displayName": "Clear System Password",
+          "description": "Clear the BIOS system password after applying settings. Requires either the BIOS System Password or the BIOS Admin Password to be populated.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "KeyboardIllumination",
+          "displayName": "Keyboard Illumination",
+          "description": "Configures the the keyboard illumination brightness percentage. The keyboard automatically illuminates when the internal keyboard, touchpad or pointstick are used. Off - Turns the keyboard illumination off. Brightness levels - Specify the percentage (25, 50, 75, 100) to adjust the brightness level. Auto - Keyboard illumination is automatically adjusted based on ambience light leavel. NOTE - Auto option requires ambience light sensor that may not be available on all systems.",
+          "required": true,
+          "defaultValue": "Bright",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Dim", "value": "Dim" },
+            { "displayName": "Bright", "value": "Bright" }
+          ]
+        },
+        {
+          "name": "UsbPowerShare",
+          "displayName": "USB PowerShare",
+          "description": "Configures the USB PowerShare feature behavior. Enabled - Charges the external devices, such as phones and portable music players, using the stored system battery when the system is turned off or in sleep mode. This feature works only if (1) The device is connected through the USB Powershare port on the notebook. (2) The system is connected with AC power. (3) The battery charge is above 50 percent. Disabled - Turns this feature off and devices attached to the USB PowerShare port will not be charged when the system is in a sleep mode or turned off.",
+          "required": true,
+          "defaultValue": "Enabled",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Enabled", "value": "Enabled" }
+          ]
+        },
+        {
+          "name": "Absolute",
+          "displayName": "Absolute",
+          "description": "Sets the value to the Absolute interface and control the Absolute service using the following options: Enabled - The Absolute interface is enabled. The Absolute service may now be activated or deactivated. Disabled - The Absolute interface is disabled. The Absolute service does not run. PermanentlyDisabled - The Absolute interface is disabled, and can only be enabled using a full reset at the factory.",
+          "required": true,
+          "defaultValue": "DisableAbsolute",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "EnableAbsolute", "value": "EnableAbsolute" },
+            { "displayName": "DisableAbsolute", "value": "DisableAbsolute" },
+            { "displayName": "PermanentlyDisabled", "value": "PermanentlyDisabled" }
+          ]
+        },
+        {
+          "name": "PrimaryBattChargeCfg",
+          "displayName": "Primary Battery Charge Configuration",
+          "description": "Configures the primary battery charge mode. The selected charging mode applies to all batteries installed in the system. Auto - Battery settings are adaptively optimized based on your typical battery usage pattern. Standard - Charges the battery at a standard rate. Express - Charges the battery faster using the express charging algorithm, Dell\u0027s fast charging technology. PrimAcUse - Charges the battery while plugged-in, preferred for the users who operate their system while plugged in to an external power source. Custom - The battery charging starts and stops based on user settings specified in Primary Battery Custom Charge Start and Primary Battery Custom Charge End.",
+          "required": true,
+          "defaultValue": "PrimAcUse",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Adaptive", "value": "Adaptive" },
+            { "displayName": "Standard", "value": "Standard" },
+            { "displayName": "Express", "value": "Express" },
+            { "displayName": "PrimAcUse", "value": "PrimAcUse" },
+            { "displayName": "Custom", "value": "Custom" }
+          ]
+        },
+        {
+          "name": "FnLock",
+          "displayName": "Fn Lock",
+          "description": "This option controls the behavior of the Dual function keys, when Fn key is pressed and when it is not. Enabled - \u003cFn+Esc\u003e key combination toggles the primary behavior of F1 to F12 between their normal and secondary functions. Disabled - You cannot toggle the primary behavior of these keys.",
+          "required": true,
+          "defaultValue": "Enabled",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Enabled", "value": "Enabled" }
+          ]
+        },
+        {
+          "name": "FnLockMode",
+          "displayName": "Fn Lock Mode",
+          "description": "If Enabled, F1 - F12 keys behave as function keys holding Fn key is required to access their secondary functions. Without holding Fn key, the dual function keys behave as normally labeled.",
+          "required": true,
+          "defaultValue": "EnableSecondary",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "DisableStandard", "value": "DisableStandard" },
+            { "displayName": "EnableSecondary", "value": "EnableSecondary" }
+          ]
+        },
+        {
+          "name": "WlanAutoSense",
+          "displayName": "WLAN Auto Sense",
+          "description": "Enabled - Disables the WLAN radio when the system is connected to wire network. When disconnected from the wired network, WLAN radio will be re-enabled.",
+          "required": true,
+          "defaultValue": "Enabled",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Enabled", "value": "Enabled" }
+          ]
+        },
+        {
+          "name": "WakeOnAc",
+          "displayName": "Wake On AC",
+          "description": "Controls the system\u0027s behavior when AC power is restored after AC power was lost. Disabled - System stays off after AC power is restored. Enabled - System powers on after AC power is restored.",
+          "required": true,
+          "defaultValue": "Disabled",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Enabled", "value": "Enabled" }
+          ]
+        },
+        {
+          "name": "WakeOnLan",
+          "displayName": "Wake On LAN",
+          "description": "Enables the system to turn on from the off state when triggered by a special LAN signal, or from the hibernate state when triggered by a special wireless LAN signal. Disabled - Does not allow the system to power on by special LAN signals when it receives a wakeup signal from the LAN or wireless LAN. LanOnly - Allows the system to be powered on by special LAN signals. WlanOnly - Allows the system to be powered on by special WLAN signals. LanWlan - Allows the system to be powered on by special LAN or wireless LAN signals. LanWithPxeBoot - Allows the system to be powered on by special LAN signals and immediately boot to PXE. AddInCard - Allows the system to be powered on by NICs, plugged into the special power connector. Onboard - Allows the system to be powered on by Onboard NIC. SfpNic - Allows the system to wake-up by special SFP signals. LanOrSfpNic - Allows the system to wake-up either by LAN, or by SFP signals. SfpNicWithPxeBoot - Allows the system to wake-up by SFP signals, and immediately boot to PXE.",
+          "required": true,
+          "defaultValue": "LanOnly",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "LanOnly", "value": "LanOnly" },
+            { "displayName": "LanWithPxeBoot", "value": "LanWithPxeBoot" }
+          ]
+        },
+        {
+          "name": "NumLock",
+          "displayName": "NumLock",
+          "description": "Enable or disable NumLock at boot.",
+          "required": true,
+          "defaultValue": "Enabled",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Disabled", "value": "Disabled" },
+            { "displayName": "Enabled", "value": "Enabled" }
+          ]
+        }
+      ],
+      "validators": null,
+      "createdDate": 1783789360,
+      "lastModifiedDate": 1783789360
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1783789360,
+  "lastModifiedDate": 1783789360,
+  "readOnly": false
+}
