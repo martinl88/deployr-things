@@ -30,12 +30,34 @@ param(
     [switch]$Mute,
 
     [Parameter(Mandatory = $false)]
-    [switch]$Unmute
+    [switch]$Unmute,
+
+    [Parameter(Mandatory = $false)]
+    [ValidateSet('Toggle', 'Mute', 'Unmute')]
+    [string]$Behaviour = 'Toggle'
 )
 
 if ($Mute -and $Unmute) {
     Write-Error "Specify either -Mute or -Unmute, not both."
     exit 1
+}
+
+try {
+    Import-Module DeployR.Utility -ErrorAction SilentlyContinue
+}
+catch {
+    Write-Verbose "DeployR.Utility could not be imported: $($_.Exception.Message)"
+}
+
+if (Get-Module -Name 'DeployR.Utility') {
+    $tsBehaviour = try { ${TSEnv:Behaviour} } catch { $null }
+    if (-not [string]::IsNullOrWhiteSpace($tsBehaviour)) {
+        if ($tsBehaviour -notin @('Toggle', 'Mute', 'Unmute')) {
+            Write-Error "Behaviour has an unsupported value '$tsBehaviour'. Expected Toggle, Mute, or Unmute."
+            exit 1
+        }
+        $Behaviour = $tsBehaviour
+    }
 }
 
 $source = @'
@@ -118,16 +140,24 @@ try {
         Add-Type -TypeDefinition $source -ErrorAction Stop
     }
 
-    $isMuted = [CoreAudio.AudioEndpoint]::GetMute()
+    try {
+        $isMuted = [CoreAudio.AudioEndpoint]::GetMute()
+    }
+    catch [System.Runtime.InteropServices.COMException] {
+        # 0x80070490 = ERROR_NOT_FOUND: no default audio render endpoint exists
+        if ($_.Exception.HResult -eq [int]0x80070490 -or $_.Exception.ErrorCode -eq [int]0x80070490) {
+            Write-Output "No audio playback device present. Skipping."
+            exit 0
+        }
+        throw
+    }
 
-    if ($Mute) {
-        $target = $true
-    }
-    elseif ($Unmute) {
-        $target = $false
-    }
-    else {
-        $target = -not $isMuted
+    $effectiveBehaviour = if ($Mute) { 'Mute' } elseif ($Unmute) { 'Unmute' } else { $Behaviour }
+
+    switch ($effectiveBehaviour) {
+        'Mute'   { $target = $true }
+        'Unmute' { $target = $false }
+        default  { $target = -not $isMuted }
     }
 
     [CoreAudio.AudioEndpoint]::SetMute($target)

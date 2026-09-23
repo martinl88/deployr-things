@@ -1,0 +1,64 @@
+{
+  "id": "26787cc1-e72a-4387-b277-619f1f1f4b5d",
+  "name": "Customize - Toggle Audio",
+  "description": "Controls the mute state of the default audio playback device. Requires an interactive session; there is no audio endpoint in Session 0 or WinPE.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "707af419-6e8d-46c3-abd3-adac93d373af",
+      "stepDefinitionId": "26787cc1-e72a-4387-b277-619f1f1f4b5d",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Toggle-Audio.ps1 script",
+          "required": true,
+          "defaultValue": "433116f0-6e39-4b1b-b78f-c556a72ed573:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Toggle-Audio.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Behaviour",
+          "displayName": "Behaviour",
+          "description": "Whether to toggle, mute, or unmute the default audio playback device.",
+          "required": true,
+          "defaultValue": "Toggle",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Toggle", "value": "Toggle" },
+            { "displayName": "Mute", "value": "Mute" },
+            { "displayName": "Unmute", "value": "Unmute" }
+          ]
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false
+}

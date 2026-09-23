@@ -1,0 +1,38 @@
+{
+  "id": "433116f0-6e39-4b1b-b78f-c556a72ed573",
+  "name": "Customize - Toggle Audio",
+  "description": "PowerShell script used by the Toggle Audio custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "ff6162ea-e54d-4493-94bd-36f41df771f3",
+      "contentItemId": "433116f0-6e39-4b1b-b78f-c556a72ed573",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Toggle-Audio.ps1",
+      "relativePath": "Content/433116f0-6e39-4b1b-b78f-c556a72ed573/1/433116f0-6e39-4b1b-b78f-c556a72ed573.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "Audio"
+  ],
+  "flags": 0
+}
