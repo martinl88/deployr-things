@@ -20,7 +20,7 @@ param(
     [string]$Source = "winget",
 
     [Parameter(Mandatory = $false)]
-    [string]$LogFile = "C:\windows\Temp\WinGetApp_Install.log"
+    [string]$LogFile = "$env:SystemDrive\_2P\Logs\WinGetApp_Install_$AppID.log"
 )
 
 function Write-Log {

@@ -20,7 +20,7 @@ function Write-Log {
 
     $Time = Get-Date -Format "HH:mm:ss.ffffff"
     $Date = Get-Date -Format "MM-dd-yyyy"
-    $LogFile = "C:\windows\Temp\WinGetApps_Install.log"
+    $LogFile = "$env:SystemDrive\_2P\Logs\WinGetApps_Install.log"
     $LogFileFolderPath = Split-Path -Path $LogFile -Parent
 
     if (!(Test-Path -Path $LogFileFolderPath)) {
