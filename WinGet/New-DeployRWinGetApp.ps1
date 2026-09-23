@@ -26,7 +26,7 @@ param(
     [string]$Status = "Active",
 
     [Parameter(Mandatory = $false)]
-    [string]$SuccessCodes = "0,3010",
+    [string]$SuccessCodes = "0 3010",
 
     [Parameter(Mandatory = $false)]
     [string]$Source = "winget",
