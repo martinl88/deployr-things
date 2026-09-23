@@ -16,7 +16,7 @@
           "displayName": "content",
           "description": "Content item containing the Install-WinGetApps.ps1 script",
           "required": true,
-          "defaultValue": "",
+          "defaultValue": "2d14c72e-1069-40ae-a8d7-14161c0f66f1:1",
           "type": "Content",
           "contentItemPurpose": "Other",
           "hidden": true,

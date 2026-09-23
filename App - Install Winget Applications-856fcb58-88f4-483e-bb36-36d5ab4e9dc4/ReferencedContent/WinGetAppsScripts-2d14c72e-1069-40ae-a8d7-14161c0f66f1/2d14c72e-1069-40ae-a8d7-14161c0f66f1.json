@@ -1,0 +1,38 @@
+{
+  "id": "2d14c72e-1069-40ae-a8d7-14161c0f66f1",
+  "name": "App - Install Winget Applications",
+  "description": "PowerShell script used by the Install Winget Applications custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "5beabad8-7520-48df-9e00-0081a85878b0",
+      "contentItemId": "2d14c72e-1069-40ae-a8d7-14161c0f66f1",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Install-WinGetApps.ps1",
+      "relativePath": "Content/2d14c72e-1069-40ae-a8d7-14161c0f66f1/1/2d14c72e-1069-40ae-a8d7-14161c0f66f1.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "WinGet"
+  ],
+  "flags": 0
+}
