@@ -105,23 +105,39 @@ $orderedSelection = @(
         Sort-Object @{ Expression = { if ($_.Type -eq "Content Item") { 0 } else { 1 } } }, Name
 )
 
+$serverContentItems = @{}
+Get-DeployRContentItem -ErrorAction SilentlyContinue | ForEach-Object {
+    $serverContentItems[[string]$_.id] = $_
+}
+
 foreach ($item in $orderedSelection) {
     try {
         Write-Host "Processing $($item.Type): $($item.Name)"
 
         if ($item.Type -eq "Content Item") {
-            $existing = Get-DeployRContentItem -Id $item.Id -ErrorAction SilentlyContinue
+            $existing = $serverContentItems[[string]$item.Id]
 
             if ($existing) {
                 Write-Host "  Content item already exists; updating source files for $($item.Name)"
 
+                $serverVersions = @{}
+                foreach ($serverVersion in @($existing.versions)) {
+                    $serverVersions[[string]$serverVersion.versionNo] = $true
+                }
+
                 foreach ($version in @($item.Definition.versions)) {
-                    $sourceFolder = Join-Path -Path (Split-Path -Parent $item.SourceFile) -ChildPath (Join-Path -Path $item.Id -ChildPath ([string]$version.versionNo))
+                    $versionNo = [string]$version.versionNo
+                    if (-not $serverVersions.ContainsKey($versionNo)) {
+                        Write-Warning "  Content item '$($item.Name)' exists on the server but version $versionNo does not; skipping content upload for that version."
+                        continue
+                    }
+
+                    $sourceFolder = Join-Path -Path (Split-Path -Parent $item.SourceFile) -ChildPath (Join-Path -Path $item.Id -ChildPath $versionNo)
                     if (-not (Test-Path -LiteralPath $sourceFolder -PathType Container)) {
                         throw "Content source folder not found: '$sourceFolder'."
                     }
 
-                    Update-DeployRContentItemContent -ContentId $item.Id -ContentVersion ([string]$version.versionNo) -SourceFolder $sourceFolder -ErrorAction Stop | Out-Null
+                    Update-DeployRContentItemContent -ContentId $item.Id -ContentVersion $versionNo -SourceFolder $sourceFolder -ErrorAction Stop | Out-Null
                 }
             }
             else {
