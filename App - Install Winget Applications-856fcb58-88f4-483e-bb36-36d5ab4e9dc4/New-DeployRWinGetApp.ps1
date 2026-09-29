@@ -174,14 +174,20 @@ process {
     try {
         $versionContentItemIdParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("ContentItemId", "Id", "ContentItem")
         $versionCommandLineParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("InstallationCommandLine", "CommandLine")
-        $versionSuccessCodeParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("InstallationSuccessCode", "SuccessCode")
+        $versionSuccessCodeParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("InstallationSuccessCodes", "InstallationSuccessCode", "SuccessCodes", "SuccessCode") -ErrorAction SilentlyContinue
         $versionDescriptionParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("Description") -ErrorAction SilentlyContinue
         $versionStatusParam = Get-DeployRParameterName -CommandName "New-DeployRContentItemVersion" -Candidates @("Status") -ErrorAction SilentlyContinue
 
         $newVersionParams = @{
             $versionContentItemIdParam = $newItem.id
             $versionCommandLineParam = $installCommand
-            $versionSuccessCodeParam = $SuccessCodes
+        }
+
+        if ($versionSuccessCodeParam) {
+            $newVersionParams[$versionSuccessCodeParam] = $SuccessCodes
+        }
+        else {
+            Write-Log -Message "WARNING: Could not find a success-code parameter on New-DeployRContentItemVersion. Success codes will use DeployR defaults." -Level "Warning"
         }
 
         if ($versionDescriptionParam -and $Description) {
