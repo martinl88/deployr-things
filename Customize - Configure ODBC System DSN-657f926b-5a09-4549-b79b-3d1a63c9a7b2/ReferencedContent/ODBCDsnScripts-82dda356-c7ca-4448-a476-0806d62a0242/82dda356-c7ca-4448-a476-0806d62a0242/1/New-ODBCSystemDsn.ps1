@@ -1,5 +1,6 @@
 #Requires -RunAsAdministrator
 
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingPlainTextForPassword', '', Justification = 'DeployR task-sequence variables are strings and ODBC requires the PWD attribute as plain text.')]
 [CmdletBinding()]
 param(
     [string]$DsnName = '',
@@ -25,7 +26,7 @@ try {
     Import-Module DeployR.Utility -ErrorAction SilentlyContinue
 }
 catch {
-    # Module is not available outside of the task sequence environment
+    Write-Verbose "DeployR.Utility is not available outside of the task sequence environment."
 }
 
 if (Get-Module -Name 'DeployR.Utility') {
