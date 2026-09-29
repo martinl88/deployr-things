@@ -22,6 +22,8 @@ Each script/step is self-contained and documented in its own section below.
 - `Customize - Configure Windows Power Settings-*/ReferencedContent/PowerSettingsScripts-*/` - Importable DeployR content item bundle containing the power settings script
 - `Customize - Toggle Audio-*/` - DeployR step definition for toggling audio mute in a task sequence
 - `Customize - Toggle Audio-*/ReferencedContent/ToggleAudioScripts-*/` - Importable DeployR content item bundle containing the audio script
+- `Customize - Configure ODBC System DSN-*/` - DeployR step definition for creating a system-wide ODBC DSN in a task sequence
+- `Customize - Configure ODBC System DSN-*/ReferencedContent/ODBCDsnScripts-*/` - Importable DeployR content item bundle containing the ODBC DSN script
 - `Dell - Change BIOS Settings-*/` - DeployR step definition for configuring Dell BIOS settings in a task sequence
 - `Dell - Change BIOS Settings-*/ReferencedContent/DellBIOSSettingsScripts-*/` - Importable DeployR content item bundle containing the Dell BIOS settings script and CSV
 - `Dell/Install-DellBIOSProvider.ps1` - Reusable PowerShell wrapper that installs the Visual C++ Redistributable (if needed) and the DellBIOSProvider PowerShell module
@@ -305,7 +307,7 @@ The helper script:
 - **`-Description`** - Optional description
 - **`-Status`** - Version status. Defaults to `Active`
 - **`-Scope`** - `machine` (default) or `user`
-- **`-SuccessCodes`** - Comma-separated success codes. Defaults to `0,3010`
+- **`-SuccessCodes`** - Space-separated success codes. Defaults to `0 3010`
 - **`-Source`** - Winget source. Defaults to `winget`
 - **`-AcceptPackageAgreements`** - Adds `-AcceptPackageAgreements` to the wrapper command line
 - **`-AcceptSourceAgreements`** - Adds `-AcceptSourceAgreements` to the wrapper command line
@@ -332,3 +334,45 @@ The helper script:
 - Applications are installed one by one in the order they are listed.
 - The final exit code is the last non-zero exit code returned by winget, or `0` if all installs succeed.
 - If no application IDs are provided, the step exits with code `1`.
+
+## Configure ODBC system DSN
+
+Use `New-ODBCSystemDsn.ps1` (in the referenced content item under `Customize - Configure ODBC System DSN-*/ReferencedContent/`) as a DeployR **task sequence step** to create or update a system-wide ODBC data source name in the 64-bit and/or 32-bit ODBC registry hives. Each step instance creates a single DSN; add the step multiple times for multiple DSNs.
+
+1. Import the bundled content item first:
+
+```powershell
+Import-DeployRContentItem -SourceFile "C:\Path\To\Customize - Configure ODBC System DSN-657f926b-5a09-4549-b79b-3d1a63c9a7b2\ReferencedContent\ODBCDsnScripts-82dda356-c7ca-4448-a476-0806d62a0242\82dda356-c7ca-4448-a476-0806d62a0242.json"
+```
+
+2. Import the step definition:
+
+```powershell
+Import-DeployRStepDefinition -SourceFile "C:\Path\To\Customize - Configure ODBC System DSN-657f926b-5a09-4549-b79b-3d1a63c9a7b2\657f926b-5a09-4549-b79b-3d1a63c9a7b2.json"
+```
+
+3. Add the step to a task sequence and fill in the DSN details.
+
+The step definition already references content item version `82dda356-c7ca-4448-a476-0806d62a0242:1`. Keep the JSON file and its sibling `82dda356-c7ca-4448-a476-0806d62a0242\1` source folder together when importing.
+
+### Available options
+
+- **DSN Name** (required) - Name of the system DSN to create or update.
+- **DSN Description** - Optional description stored in the DSN.
+- **ODBC Driver** (required) - `ODBC Driver 18 for SQL Server` (default), `ODBC Driver 17 for SQL Server`, `SQL Server`, `SQL Server Native Client 11.0`, `MySQL ODBC 8.0 Unicode Driver`, `PostgreSQL Unicode`, or `Other`.
+- **Other Driver Name** - Driver name used when `ODBC Driver` is `Other`. Must match the `ODBCINST.INI` entry exactly.
+- **Server** - Server name or address stored in the DSN.
+- **Database** - Default database stored in the DSN.
+- **Username** - SQL login username. Stored as the `UID` attribute in the DSN. Optional; only used when **Trusted Connection** is `No`.
+- **Password** - SQL login password. Stored as the `PWD` attribute in the DSN. Optional; only used when **Trusted Connection** is `No`.
+- **Trusted Connection** - `No` (default) or `Yes`; sets `Trusted_Connection=Yes` for integrated authentication.
+- **Architecture** - `Both` (default), `64-bit only`, or `32-bit only`. 64-bit writes to `HKLM:\SOFTWARE\ODBC`, 32-bit writes to the WOW6432Node hive.
+- **Additional Attributes** - Extra DSN attributes, one `key=value` per line. Example: `Encrypt=Yes`. `UID` and `PWD` set via **Username** / **Password** take precedence over values supplied here.
+
+### Notes
+
+- Must run elevated (`#Requires -RunAsAdministrator`).
+- The specified ODBC driver must already be installed for each requested architecture; the step fails if the driver is missing from `ODBCINST.INI`.
+- If the DSN already exists its values are updated in place.
+- Username and password values are passed in plain text through the task sequence and stored in the registry DSN. Restrict the task sequence and content item to authorized administrators.
+- Logs to `C:\_2P\Logs\ODBCDsn.log` in CMTrace format. Exits `0` on success, `1` on failure.

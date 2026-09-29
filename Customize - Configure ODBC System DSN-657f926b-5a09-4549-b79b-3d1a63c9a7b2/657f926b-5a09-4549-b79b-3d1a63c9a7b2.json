@@ -1,0 +1,195 @@
+{
+  "id": "657f926b-5a09-4549-b79b-3d1a63c9a7b2",
+  "name": "Customize - Configure ODBC System DSN",
+  "description": "Creates or updates a system-wide ODBC data source name (DSN) in the 64-bit and/or 32-bit ODBC registry hives. The specified ODBC driver must already be installed.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "560d6134-9b63-497d-b3d0-70f56c1d1dfe",
+      "stepDefinitionId": "657f926b-5a09-4549-b79b-3d1a63c9a7b2",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the New-ODBCSystemDsn.ps1 script",
+          "required": true,
+          "defaultValue": "82dda356-c7ca-4448-a476-0806d62a0242:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "New-ODBCSystemDsn.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DsnName",
+          "displayName": "DSN Name",
+          "description": "Name of the system data source name (DSN) to create or update.",
+          "required": true,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Description",
+          "displayName": "DSN Description",
+          "description": "Optional description stored in the DSN.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Driver",
+          "displayName": "ODBC Driver",
+          "description": "The ODBC driver to use. The name must match an entry in ODBCINST.INI. Select 'Other' to enter a driver name manually.",
+          "required": true,
+          "defaultValue": "ODBC Driver 18 for SQL Server",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "ODBC Driver 18 for SQL Server", "value": "ODBC Driver 18 for SQL Server" },
+            { "displayName": "ODBC Driver 17 for SQL Server", "value": "ODBC Driver 17 for SQL Server" },
+            { "displayName": "SQL Server", "value": "SQL Server" },
+            { "displayName": "SQL Server Native Client 11.0", "value": "SQL Server Native Client 11.0" },
+            { "displayName": "MySQL ODBC 8.0 Unicode Driver", "value": "MySQL ODBC 8.0 Unicode Driver" },
+            { "displayName": "PostgreSQL Unicode", "value": "PostgreSQL Unicode" },
+            { "displayName": "Other (specify below)", "value": "Other" }
+          ]
+        },
+        {
+          "name": "DriverOther",
+          "displayName": "Other Driver Name",
+          "description": "Driver name to use when 'ODBC Driver' is set to 'Other'. Must match the driver name shown in ODBCINST.INI exactly.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Server",
+          "displayName": "Server",
+          "description": "Server name or address stored in the DSN (e.g. sql01.contoso.com or sql01\\INSTANCENAME).",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Database",
+          "displayName": "Database",
+          "description": "Default database stored in the DSN.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Username",
+          "displayName": "Username",
+          "description": "SQL login username. Stored as the UID attribute in the DSN. Optional; only used when Trusted Connection is No.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Password",
+          "displayName": "Password",
+          "description": "SQL login password. Stored as the PWD attribute in the DSN. Optional; only used when Trusted Connection is No. The value is passed in plain text through the task sequence.",
+          "required": false,
+          "defaultValue": "",
+          "type": "Text",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "TrustedConnection",
+          "displayName": "Trusted Connection",
+          "description": "Whether to set Trusted_Connection=Yes on the DSN (Windows/integrated authentication).",
+          "required": true,
+          "defaultValue": "No",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "No", "value": "No" },
+            { "displayName": "Yes", "value": "Yes" }
+          ]
+        },
+        {
+          "name": "Platform",
+          "displayName": "Architecture",
+          "description": "Which ODBC registry hives to write the system DSN to. 64-bit applications use the 64-bit hive; 32-bit applications use the 32-bit (WOW6432Node) hive.",
+          "required": true,
+          "defaultValue": "Both",
+          "type": "DropDownList",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": [
+            { "displayName": "Both (32-bit and 64-bit)", "value": "Both" },
+            { "displayName": "64-bit only", "value": "Platform64" },
+            { "displayName": "32-bit only", "value": "Platform32" }
+          ]
+        },
+        {
+          "name": "AdditionalAttributes",
+          "displayName": "Additional Attributes",
+          "description": "Extra DSN attributes, one per line in key=value format. Example: Encrypt=Yes",
+          "required": false,
+          "defaultValue": "",
+          "type": "LargeText",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false
+}
