@@ -1,0 +1,12 @@
+Place the font files to install in this folder.
+
+Supported extensions: .fon, .fnt, .ttf, .ttc, .otf
+Subfolders are included when the step's "Include subfolders" option is enabled.
+
+After adding files, upload this version's content to DeployR with:
+
+    Update-DeployRContentItemContent -ContentId c83bb5aa-dc00-4753-aaad-12204fc80f26 -ContentVersion 1 -SourceFolder "<repo>\Customize - Install Fonts-28e96612-f57d-4a6e-8fb8-58cbce06b1af\ReferencedContent\Fonts-c83bb5aa-dc00-4753-aaad-12204fc80f26\c83bb5aa-dc00-4753-aaad-12204fc80f26\1"
+
+or re-run Import-DeployRItems.ps1 and select the Fonts content item.
+
+Delete this file before uploading if you do not want it included in the content item.

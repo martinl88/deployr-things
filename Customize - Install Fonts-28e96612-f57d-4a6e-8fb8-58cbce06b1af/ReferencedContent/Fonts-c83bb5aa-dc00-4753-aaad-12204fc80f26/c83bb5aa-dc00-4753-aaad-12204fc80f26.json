@@ -1,0 +1,37 @@
+{
+  "id": "c83bb5aa-dc00-4753-aaad-12204fc80f26",
+  "name": "Fonts",
+  "description": "Font files installed by the Install Fonts custom step definition. Place .fon, .fnt, .ttf, .ttc, and .otf files in the version source folder and upload with Update-DeployRContentItemContent or the DeployR console.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "d64ea007-e476-4848-a788-09061bd09120",
+      "contentItemId": "c83bb5aa-dc00-4753-aaad-12204fc80f26",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Font files",
+      "relativePath": "Content/c83bb5aa-dc00-4753-aaad-12204fc80f26/1/c83bb5aa-dc00-4753-aaad-12204fc80f26.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790800980,
+      "lastModifiedDate": 1790800980,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790800980,
+  "lastModifiedDate": 1790800980,
+  "readOnly": false,
+  "tags": [
+    "Fonts"
+  ],
+  "flags": 0
+}

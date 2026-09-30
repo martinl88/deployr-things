@@ -32,6 +32,9 @@ Each script/step is self-contained and documented in its own section below.
 - `Customize - Remove Windows Built-in Applications-*/` - DeployR step definition with per-app checkboxes for removing built-in applications
 - `Customize - Remove Windows Built-in Applications-*/ReferencedContent/BuiltInAppRemovalScripts-*/` - Importable content item containing the removal script
 - `Customize - Remove Windows Built-in Applications-*/Get-InstalledBuiltInApps.ps1` - Offline helper that reports installed apps found in an embedded Win11Debloat catalog snapshot
+- `Customize - Install Fonts-*/` - DeployR step definition for installing Windows fonts in a task sequence
+- `Customize - Install Fonts-*/ReferencedContent/FontInstallScripts-*/` - Importable content item containing the font install script
+- `Customize - Install Fonts-*/ReferencedContent/Fonts-*/` - Importable content item to hold the font files installed by the step
 - `Import-DeployRItems.ps1` - Interactive helper that imports or updates all DeployR content items and step definitions found in the repository
 
 ## Manage install.wim editions
@@ -104,6 +107,24 @@ Use the **Start menu cleanup** drop-down to control what happens after app remov
 - **No cleanup** - Leaves Start menu settings untouched.
 
 This helps prevent ghost tiles or suggested-app placeholders from appearing after the package is removed. Existing user profiles are not modified.
+
+## Install fonts
+
+The `Customize - Install Fonts-*` step installs every font file in a font-files content item. Two content items are used: one holds the install script, the other holds the fonts.
+
+1. Place the `.fon`, `.fnt`, `.ttf`, `.ttc`, or `.otf` files to install in `Customize - Install Fonts-*/ReferencedContent/Fonts-*/c83bb5aa-dc00-4753-aaad-12204fc80f26/1/`.
+
+2. Import the font-files and script content items, then the step definition (or run `Import-DeployRItems.ps1` and select all three):
+
+```powershell
+Import-DeployRContentItem -SourceFile "C:\Path\To\Customize - Install Fonts-28e96612-f57d-4a6e-8fb8-58cbce06b1af\ReferencedContent\Fonts-c83bb5aa-dc00-4753-aaad-12204fc80f26\c83bb5aa-dc00-4753-aaad-12204fc80f26.json"
+Import-DeployRContentItem -SourceFile "C:\Path\To\Customize - Install Fonts-28e96612-f57d-4a6e-8fb8-58cbce06b1af\ReferencedContent\FontInstallScripts-0e085087-afd9-4a6c-9f80-184e0699878e\0e085087-afd9-4a6c-9f80-184e0699878e.json"
+Import-DeployRStepDefinition -SourceFile "C:\Path\To\Customize - Install Fonts-28e96612-f57d-4a6e-8fb8-58cbce06b1af\28e96612-f57d-4a6e-8fb8-58cbce06b1af.json"
+```
+
+3. Add the step to a task sequence. The **Font files** option defaults to the bundled `Fonts` content item; select a different content item to install another set of fonts. Enable **Include subfolders** to pick up fonts nested in the content item.
+
+Each font is copied to the Windows Fonts folder, registered with GDI, and given a `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts` registry value so it persists across sessions. Results are written in CMTrace format to `C:\_2P\Logs\FontInstall.log`. The step fails if no font files are found or any font fails to install.
 
 ## Task sequence step definition
 

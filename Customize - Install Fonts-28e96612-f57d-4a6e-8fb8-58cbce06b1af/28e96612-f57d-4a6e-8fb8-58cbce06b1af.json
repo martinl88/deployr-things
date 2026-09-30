@@ -1,0 +1,72 @@
+{
+  "id": "28e96612-f57d-4a6e-8fb8-58cbce06b1af",
+  "name": "Customize - Install Fonts",
+  "description": "Installs Windows fonts from a font-files content item. Copies each font to the Fonts folder, registers it with GDI, and writes the matching registry entry.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "4f2da7ad-61ec-4901-b5a4-e45c18bc9d99",
+      "stepDefinitionId": "28e96612-f57d-4a6e-8fb8-58cbce06b1af",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Install-Fonts.ps1 script",
+          "required": true,
+          "defaultValue": "0e085087-afd9-4a6c-9f80-184e0699878e:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Install-Fonts.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "FontContent",
+          "displayName": "Font files",
+          "description": "Content item containing the font files to install (.fon, .fnt, .ttf, .ttc, .otf).",
+          "required": true,
+          "defaultValue": "c83bb5aa-dc00-4753-aaad-12204fc80f26:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "Recurse",
+          "displayName": "Include subfolders",
+          "description": "Include font files in subfolders of the font content item.",
+          "required": true,
+          "defaultValue": "true",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790800980,
+      "lastModifiedDate": 1790800980
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790800980,
+  "lastModifiedDate": 1790800980,
+  "readOnly": false
+}

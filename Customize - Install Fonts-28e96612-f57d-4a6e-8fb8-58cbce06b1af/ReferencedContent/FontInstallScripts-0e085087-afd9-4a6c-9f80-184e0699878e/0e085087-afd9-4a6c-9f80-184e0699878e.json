@@ -1,0 +1,38 @@
+{
+  "id": "0e085087-afd9-4a6c-9f80-184e0699878e",
+  "name": "Customize - Install Fonts",
+  "description": "PowerShell script used by the Install Fonts custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "2847e265-7c67-49ee-a569-9354aeff627e",
+      "contentItemId": "0e085087-afd9-4a6c-9f80-184e0699878e",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Install-Fonts.ps1",
+      "relativePath": "Content/0e085087-afd9-4a6c-9f80-184e0699878e/1/0e085087-afd9-4a6c-9f80-184e0699878e.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790800980,
+      "lastModifiedDate": 1790800980,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790800980,
+  "lastModifiedDate": 1790800980,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "Fonts"
+  ],
+  "flags": 0
+}
