@@ -63,7 +63,7 @@ Write-Log -Message "=====================================================" -Type
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
 
-$tempFolder = Join-Path -Path $env:TEMP -ChildPath "EstonianIDCard_$(New-Guid)"
+$tempFolder = Join-Path -Path $env:TEMP -ChildPath "EstonianIDCard_$([System.Guid]::NewGuid().ToString())"
 New-Item -ItemType Directory -Path $tempFolder -Force | Out-Null
 
 $openEidSuccess = $false
