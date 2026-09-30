@@ -1,0 +1,38 @@
+{
+  "id": "48c6d739-535b-4b75-8be6-d86d55a1cd59",
+  "name": "Customize - Remove Windows Built-in Applications",
+  "description": "PowerShell scripts used by the Remove Windows Built-in Applications custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "206b421c-90e4-4d47-b3b0-6aee91b4f3c1",
+      "contentItemId": "48c6d739-535b-4b75-8be6-d86d55a1cd59",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Remove-BuiltInApps.ps1",
+      "relativePath": "Content/48c6d739-535b-4b75-8be6-d86d55a1cd59/1/48c6d739-535b-4b75-8be6-d86d55a1cd59.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790769600,
+      "lastModifiedDate": 1790769600,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790769600,
+  "lastModifiedDate": 1790769600,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "BuiltInAppRemoval"
+  ],
+  "flags": 0
+}
