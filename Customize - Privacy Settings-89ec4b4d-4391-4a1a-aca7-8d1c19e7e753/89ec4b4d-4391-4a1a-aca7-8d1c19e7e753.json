@@ -1,0 +1,144 @@
+{
+  "id": "89ec4b4d-4391-4a1a-aca7-8d1c19e7e753",
+  "name": "Customize - Privacy Settings",
+  "description": "Applies Windows privacy and suggested-content settings. HKCU-based settings are applied to the Default user profile so all new users inherit them.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "34092d56-11ed-4c04-9921-f17888539b67",
+      "stepDefinitionId": "89ec4b4d-4391-4a1a-aca7-8d1c19e7e753",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Set-PrivacySettings.ps1 script",
+          "required": true,
+          "defaultValue": "36437104-9d9e-46ff-b555-b698f4add97e:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Set-PrivacySettings.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableTelemetry",
+          "displayName": "Disable telemetry, tracking & targeted ads",
+          "description": "Disables the advertising ID, tailored experiences, online speech recognition, inking/typing personalization, diagnostic data (AllowTelemetry), activity history, app-launch tracking, feedback prompts, and Edge personalization/diagnostic reporting.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableWindowsSuggestions",
+          "displayName": "Disable tips, tricks & suggested content throughout Windows",
+          "description": "Disables the Windows welcome experience, Start suggestions and recommendations, tips while using Windows, suggested content in Settings, account and sync provider notifications, silent suggested-app installs, Phone Link suggestions, and backup reminder notifications.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableLocationServices",
+          "displayName": "Disable Windows location services & app location access",
+          "description": "Disables the Windows location service system-wide via the LocationAndSensors policy.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableFindMyDevice",
+          "displayName": "Disable Find My Device location tracking",
+          "description": "Disables Find My Device via the FindMyDevice policy.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableLockscreenTips",
+          "displayName": "Disable tips & tricks on the lock screen",
+          "description": "Disables fun facts, tips and rotating overlay content on the lock screen.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableDesktopSpotlight",
+          "displayName": "Disable Windows Spotlight for desktop",
+          "description": "Disables the Windows Spotlight desktop wallpaper collection and removes the 'Learn about this picture' desktop icon entry.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableEdgeAds",
+          "displayName": "Disable ads, suggestions and newsfeed in Edge",
+          "description": "Disables the Edge new tab page MSN newsfeed and sponsored content, shopping assistant, tab services suggestions, alternate error pages, feedback prompts, recommendations, wallet donation prompts, and default-browser campaigns.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableSettings365Ads",
+          "displayName": "Hide Microsoft 365 Copilot ads in Settings Home",
+          "description": "Hides Microsoft 365 consumer account advertisements on the Settings Home page via the DisableConsumerAccountStateContent policy.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false
+}

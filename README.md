@@ -24,6 +24,8 @@ Each script/step is self-contained and documented in its own section below.
 - `Customize - Toggle Audio-*/ReferencedContent/ToggleAudioScripts-*/` - Importable DeployR content item bundle containing the audio script
 - `Customize - Configure ODBC System DSN-*/` - DeployR step definition for creating a system-wide ODBC DSN in a task sequence
 - `Customize - Configure ODBC System DSN-*/ReferencedContent/ODBCDsnScripts-*/` - Importable DeployR content item bundle containing the ODBC DSN script
+- `Customize - Privacy Settings-*/` - DeployR step definition for applying Windows privacy and suggested-content settings in a task sequence
+- `Customize - Privacy Settings-*/ReferencedContent/PrivacyScripts-*/` - Importable DeployR content item bundle containing the privacy settings script
 - `Dell - Change BIOS Settings-*/` - DeployR step definition for configuring Dell BIOS settings in a task sequence
 - `Dell - Change BIOS Settings-*/ReferencedContent/DellBIOSSettingsScripts-*/` - Importable DeployR content item bundle containing the Dell BIOS settings script and CSV
 - `Dell/Install-DellBIOSProvider.ps1` - Reusable PowerShell wrapper that installs the Visual C++ Redistributable (if needed) and the DellBIOSProvider PowerShell module
@@ -234,6 +236,45 @@ The step definition already references content item version `7ce6e61b-4006-42c6-
 - System hibernation and Fast startup are machine-wide settings rather than per-plan settings. The script rejects disabling hibernation while also requesting a hibernate timeout, Hibernate action, or enabled Fast startup.
 - Fast startup is configured through `HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power\HiberbootEnabled` and the applied value is verified.
 - Some computers do not expose a lid or sleep button. Unsupported `powercfg` settings are reported as failures in `C:\_2P\Logs\PowerSettings.log`.
+
+## Configure Windows privacy settings
+
+Use `Customize - Privacy Settings-*/ReferencedContent/PrivacyScripts-*/36437104-9d9e-46ff-b555-b698f4add97e/1/Set-PrivacySettings.ps1` as a DeployR **task sequence step** to apply Windows privacy and suggested-content settings, based on the tweaks used by [Win11Debloat](https://github.com/raphire/win11debloat).
+
+1. Import the bundled content item first:
+
+```powershell
+Import-DeployRContentItem -SourceFile "C:\Path\To\Customize - Privacy Settings-89ec4b4d-4391-4a1a-aca7-8d1c19e7e753\ReferencedContent\PrivacyScripts-36437104-9d9e-46ff-b555-b698f4add97e\36437104-9d9e-46ff-b555-b698f4add97e.json"
+```
+
+2. Import the step definition:
+
+```powershell
+Import-DeployRStepDefinition -SourceFile "C:\Path\To\Customize - Privacy Settings-89ec4b4d-4391-4a1a-aca7-8d1c19e7e753\89ec4b4d-4391-4a1a-aca7-8d1c19e7e753.json"
+```
+
+3. Add the step to a task sequence and check only the settings that the step should apply. Unchecked options leave the system unchanged.
+
+The step definition already references content item version `36437104-9d9e-46ff-b555-b698f4add97e:1`. Keep the JSON file and its sibling `36437104-9d9e-46ff-b555-b698f4add97e\1` source folder together when importing.
+
+### Available options
+
+- **Disable telemetry, tracking & targeted ads** - Advertising ID, tailored experiences, online speech recognition, inking/typing personalization, diagnostic data (`AllowTelemetry`), activity history, app-launch tracking, feedback prompts, and Edge personalization/diagnostic reporting.
+- **Disable tips, tricks & suggested content throughout Windows** - Windows welcome experience, Start suggestions and recommendations, tips while using Windows, suggested Settings content, account and sync provider notifications, silent suggested-app installs, Phone Link suggestions, and backup reminder notifications.
+- **Disable Windows location services & app location access** - System-wide location services via the `LocationAndSensors` policy.
+- **Disable Find My Device location tracking** - Via the `FindMyDevice` policy.
+- **Disable tips & tricks on the lock screen** - Fun facts, tips, and rotating overlay content on the lock screen.
+- **Disable Windows Spotlight for desktop** - Spotlight wallpaper collection and the "Learn about this picture" desktop icon.
+- **Disable ads, suggestions and newsfeed in Edge** - New tab page MSN feed and sponsored content, shopping assistant, tab services, alternate error pages, feedback prompts, recommendations, wallet donation prompts, and default-browser campaigns.
+- **Hide Microsoft 365 Copilot ads in Settings Home** - Via the `DisableConsumerAccountStateContent` policy.
+
+### Notes
+
+- Must run elevated (`#Requires -RunAsAdministrator`).
+- HKLM policy values are written directly. Because task sequence steps run as SYSTEM, HKCU values are applied to the **Default user profile** hive (`C:\Users\Default\NTUSER.DAT`, mounted temporarily at `HKU\DeployRPrivacyDefault`) so all new user profiles inherit them. Existing user profiles are not modified.
+- Every written value is read back and verified; a mismatch fails the step.
+- `AllowTelemetry=0` is fully honored only on Enterprise/Education SKUs (same caveat as Win11Debloat); it is harmless elsewhere.
+- Applied settings and skipped options are logged to `C:\_2P\Logs\PrivacySettings.log` in CMTrace format.
 
 ## Toggle audio
 

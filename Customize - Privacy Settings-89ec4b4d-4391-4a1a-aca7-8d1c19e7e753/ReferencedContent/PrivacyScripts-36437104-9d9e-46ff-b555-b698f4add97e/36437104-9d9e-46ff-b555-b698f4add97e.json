@@ -1,0 +1,38 @@
+{
+  "id": "36437104-9d9e-46ff-b555-b698f4add97e",
+  "name": "Customize - Privacy Settings",
+  "description": "PowerShell scripts used by the Privacy Settings custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "6731117a-a574-4b73-a7b6-52b6e8030dcf",
+      "contentItemId": "36437104-9d9e-46ff-b555-b698f4add97e",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Set-PrivacySettings.ps1",
+      "relativePath": "Content/36437104-9d9e-46ff-b555-b698f4add97e/1/36437104-9d9e-46ff-b555-b698f4add97e.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790121600,
+      "lastModifiedDate": 1790121600,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790121600,
+  "lastModifiedDate": 1790121600,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "PrivacySettings"
+  ],
+  "flags": 0
+}
