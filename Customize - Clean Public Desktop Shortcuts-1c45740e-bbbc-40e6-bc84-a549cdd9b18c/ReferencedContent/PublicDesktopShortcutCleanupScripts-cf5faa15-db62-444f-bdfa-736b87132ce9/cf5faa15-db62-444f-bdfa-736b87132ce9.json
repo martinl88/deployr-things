@@ -1,0 +1,38 @@
+{
+  "id": "cf5faa15-db62-444f-bdfa-736b87132ce9",
+  "name": "Customize - Clean Public Desktop Shortcuts",
+  "description": "PowerShell script used by the Clean Public Desktop Shortcuts custom step definition.",
+  "contentItemType": "Folder",
+  "contentItemPurpose": "Other",
+  "versions": [
+    {
+      "id": "75649c41-86bb-48a6-8f1a-83dd79bf348e",
+      "contentItemId": "cf5faa15-db62-444f-bdfa-736b87132ce9",
+      "versionNo": 1,
+      "status": "Active",
+      "description": "Clear-PublicDesktopShortcuts.ps1",
+      "relativePath": "Content/cf5faa15-db62-444f-bdfa-736b87132ce9/1/cf5faa15-db62-444f-bdfa-736b87132ce9.wim",
+      "contentSize": 0,
+      "externalURL": null,
+      "createdDate": 1790726400,
+      "lastModifiedDate": 1790726400,
+      "hash": null,
+      "installationCommandLine": null,
+      "installationWorkingDirectory": null,
+      "installationSuccessCodes": null,
+      "installationDependencies": null,
+      "driverManufacturer": null,
+      "driverModel": null,
+      "tags": null
+    }
+  ],
+  "versionsCount": 1,
+  "createdDate": 1790726400,
+  "lastModifiedDate": 1790726400,
+  "readOnly": false,
+  "tags": [
+    "CustomStepDefinition",
+    "PublicDesktopShortcutCleanup"
+  ],
+  "flags": 0
+}

@@ -1,0 +1,72 @@
+{
+  "id": "1c45740e-bbbc-40e6-bc84-a549cdd9b18c",
+  "name": "Customize - Clean Public Desktop Shortcuts",
+  "description": "Removes unapproved shortcut files from the Windows Public Desktop while preserving an editable list of shortcut names.",
+  "typeName": "App",
+  "versions": [
+    {
+      "id": "017c8a16-5729-47d2-88cc-8bf8119ac127",
+      "stepDefinitionId": "1c45740e-bbbc-40e6-bc84-a549cdd9b18c",
+      "versionNo": 1,
+      "status": "Active",
+      "description": null,
+      "options": [
+        {
+          "name": "content",
+          "displayName": "content",
+          "description": "Content item containing the Clear-PublicDesktopShortcuts.ps1 script",
+          "required": true,
+          "defaultValue": "cf5faa15-db62-444f-bdfa-736b87132ce9:1",
+          "type": "Content",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "scriptName",
+          "displayName": "scriptName",
+          "description": "Name of the PowerShell script inside the content item",
+          "required": true,
+          "defaultValue": "Clear-PublicDesktopShortcuts.ps1",
+          "type": "Script",
+          "contentItemPurpose": "Other",
+          "hidden": true,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "ShortcutsToKeep",
+          "displayName": "Shortcuts to Keep",
+          "description": "Enter one shortcut filename per line. Extensions are optional. A blank list removes every .lnk and .url shortcut from the Public Desktop.",
+          "required": false,
+          "defaultValue": "Microsoft Edge\r\nGoogle Chrome",
+          "type": "LargeText",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        },
+        {
+          "name": "DisableEdgeDesktopShortcutCreation",
+          "displayName": "Disable Microsoft Edge desktop shortcut creation",
+          "description": "Sets the Microsoft Edge DesktopShortcutCreationEnabled machine policy to 0 so Edge does not create desktop shortcuts.",
+          "required": true,
+          "defaultValue": "false",
+          "type": "Boolean",
+          "contentItemPurpose": "Other",
+          "hidden": false,
+          "validations": [],
+          "dropdownOptions": []
+        }
+      ],
+      "validators": null,
+      "createdDate": 1790726400,
+      "lastModifiedDate": 1790726400
+    }
+  ],
+  "versionsCount": 0,
+  "createdDate": 1790726400,
+  "lastModifiedDate": 1790726400,
+  "readOnly": false
+}

@@ -35,6 +35,8 @@ Each script/step is self-contained and documented in its own section below.
 - `Customize - Install Fonts-*/` - DeployR step definition for installing Windows fonts in a task sequence
 - `Customize - Install Fonts-*/ReferencedContent/FontInstallScripts-*/` - Importable content item containing the font install script
 - `Customize - Install Fonts-*/ReferencedContent/Fonts-*/` - Importable content item to hold the font files installed by the step
+- `Customize - Clean Public Desktop Shortcuts-*/` - DeployR step definition for removing unapproved shortcuts from the Public Desktop
+- `Customize - Clean Public Desktop Shortcuts-*/ReferencedContent/PublicDesktopShortcutCleanupScripts-*/` - Importable content item containing the shortcut cleanup script
 - `Import-DeployRItems.ps1` - Interactive helper that imports or updates all DeployR content items and step definitions found in the repository
 
 ## Manage install.wim editions
@@ -107,6 +109,26 @@ Use the **Start menu cleanup** drop-down to control what happens after app remov
 - **No cleanup** - Leaves Start menu settings untouched.
 
 This helps prevent ghost tiles or suggested-app placeholders from appearing after the package is removed. Existing user profiles are not modified.
+
+## Clean Public Desktop shortcuts
+
+The `Customize - Clean Public Desktop Shortcuts-*` step removes unapproved shortcut files from the Windows Public Desktop.
+
+1. Import the bundled script content item:
+
+```powershell
+Import-DeployRContentItem -SourceFile "C:\Path\To\Customize - Clean Public Desktop Shortcuts-1c45740e-bbbc-40e6-bc84-a549cdd9b18c\ReferencedContent\PublicDesktopShortcutCleanupScripts-cf5faa15-db62-444f-bdfa-736b87132ce9\cf5faa15-db62-444f-bdfa-736b87132ce9.json"
+```
+
+2. Import the step definition:
+
+```powershell
+Import-DeployRStepDefinition -SourceFile "C:\Path\To\Customize - Clean Public Desktop Shortcuts-1c45740e-bbbc-40e6-bc84-a549cdd9b18c\1c45740e-bbbc-40e6-bc84-a549cdd9b18c.json"
+```
+
+3. Add the step to a task sequence and enter one filename per line in **Shortcuts to Keep**. The default list retains `Microsoft Edge` and `Google Chrome`. Enable **Disable Microsoft Edge desktop shortcut creation** to set `HKLM\SOFTWARE\Policies\Microsoft\Edge\DesktopShortcutCreationEnabled` to `0` and prevent Edge from creating shortcuts.
+
+Names are matched case-insensitively by filename without the `.lnk` or `.url` extension, so extensions in the list are optional. Newlines, commas, and semicolons are accepted as separators. A blank list removes every top-level `.lnk` and `.url` file. The step does not recurse and does not remove directories or non-shortcut files. The Edge policy is left unchanged when its checkbox is clear. Run the step in an elevated task sequence context. Results are written in CMTrace format to `C:\_2P\Logs\PublicDesktopShortcutCleanup.log`.
 
 ## Install fonts
 
