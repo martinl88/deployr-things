@@ -109,6 +109,8 @@ if ($AcceptSourceAgreements) {
     $wingetArgs += "--accept-source-agreements"
 }
 
+$wingetArgs += "--force"
+
 Write-Log -Message "Running: $wingetExe $($wingetArgs -join ' ')" -Type 1
 
 try {

@@ -75,6 +75,7 @@ Write-Log -Message "Found winget.exe at: $wingetExe" -Type 1
 $wingetArgs = @(
     "install",
     "--silent",
+    "--force",
     "--source",
     "winget"
 )
