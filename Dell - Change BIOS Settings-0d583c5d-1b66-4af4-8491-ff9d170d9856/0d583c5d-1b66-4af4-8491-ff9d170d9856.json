@@ -1,7 +1,7 @@
 {
   "id": "0d583c5d-1b66-4af4-8491-ff9d170d9856",
   "name": "App - Configure Dell BIOS Settings",
-  "description": "Configures common Dell BIOS settings using the DellBIOSProvider PowerShell module, with options to set or clear the admin and system passwords.",
+  "description": "Configures common Dell BIOS settings using the native Dell WMI provider, with options to set or clear the admin and system passwords.",
   "typeName": "App",
   "versions": [
     {
@@ -14,7 +14,7 @@
         {
           "name": "content",
           "displayName": "content",
-          "description": "Content item containing the Set-DellBIOSSettings.ps1 script and DellBiosSettings.csv",
+          "description": "Content item containing the native WMI Set-DellBIOSSettings.ps1 script",
           "required": true,
           "defaultValue": "c163d154-dc67-44a9-a159-bd27cc2e757f:1",
           "type": "Content",
@@ -38,8 +38,8 @@
         {
           "name": "BiosPassword",
           "displayName": "BIOS Admin Password",
-          "description": "The current BIOS admin password. Also used to set or clear the admin password when needed.",
-          "required": true,
+          "description": "Optional BIOS admin password. Required when one is already configured; when supplied on an unprotected computer, it is set before applying settings.",
+          "required": false,
           "defaultValue": "",
           "type": "Text",
           "contentItemPurpose": "Other",
@@ -112,22 +112,6 @@
           "dropdownOptions": [
             { "displayName": "Disabled", "value": "Disabled" },
             { "displayName": "Enabled", "value": "Enabled" }
-          ]
-        },
-        {
-          "name": "Absolute",
-          "displayName": "Absolute",
-          "description": "Sets the value to the Absolute interface and control the Absolute service using the following options: Enabled - The Absolute interface is enabled. The Absolute service may now be activated or deactivated. Disabled - The Absolute interface is disabled. The Absolute service does not run. PermanentlyDisabled - The Absolute interface is disabled, and can only be enabled using a full reset at the factory.",
-          "required": true,
-          "defaultValue": "DisableAbsolute",
-          "type": "DropDownList",
-          "contentItemPurpose": "Other",
-          "hidden": false,
-          "validations": [],
-          "dropdownOptions": [
-            { "displayName": "EnableAbsolute", "value": "EnableAbsolute" },
-            { "displayName": "DisableAbsolute", "value": "DisableAbsolute" },
-            { "displayName": "PermanentlyDisabled", "value": "PermanentlyDisabled" }
           ]
         },
         {
